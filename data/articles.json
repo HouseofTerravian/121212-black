@@ -1,0 +1,79 @@
+{
+  "articles": [
+    {
+      "id": "building-black-wealth-2026",
+      "type": "original",
+      "title": "Building Black Wealth in 2026: A Network Approach",
+      "excerpt": "How collective economics and community-driven commerce are reshaping the path to generational wealth for the diaspora.",
+      "category": "BUSINESS",
+      "author": "121212 Editorial",
+      "publishedAt": "2026-02-03",
+      "image": "/images/placeholder-business.jpg",
+      "featured": true,
+      "slug": "building-black-wealth-2026",
+      "content": "The path to generational wealth has always required community. In 2026, the 121212 Network is proving that collective economics isn't just theory—it's infrastructure.\n\nAcross 32 cities, Black entrepreneurs are building together, sharing resources, and creating economic corridors that keep dollars circulating within our communities longer.\n\nThis is the new model. This is the movement."
+    },
+    {
+      "id": "atlanta-territory-launch",
+      "type": "original",
+      "title": "Atlanta Territory Officially Launches as Tier 1 Hub",
+      "excerpt": "The first major territory claim marks a milestone for the network's expansion into physical economic infrastructure.",
+      "category": "MOVEMENT",
+      "author": "121212 Editorial",
+      "publishedAt": "2026-01-28",
+      "image": "/images/placeholder-atlanta.jpg",
+      "featured": true,
+      "slug": "atlanta-territory-launch",
+      "content": "Atlanta has officially become the first Tier 1 territory in the 121212 Network. This milestone represents more than a business expansion—it's the establishment of real economic infrastructure owned and operated by the community.\n\nTerritory leads will curate local vendors, host events, and ensure that the network's presence in Atlanta reflects the city's unique culture and needs."
+    },
+    {
+      "id": "vendor-spotlight-february",
+      "type": "original",
+      "title": "Vendor Spotlight: Meet the Entrepreneurs Powering the Network",
+      "excerpt": "From handcrafted goods to tech services, these vendors represent the diversity and excellence of Black commerce.",
+      "category": "MARKETPLACE",
+      "author": "121212 Editorial",
+      "publishedAt": "2026-01-20",
+      "image": "/images/placeholder-vendors.jpg",
+      "featured": false,
+      "slug": "vendor-spotlight-february",
+      "content": "Every vendor in the 121212 Network has a story. This month, we highlight three entrepreneurs who are building businesses that serve their communities while reaching global markets.\n\nFrom artisanal products crafted with generational techniques to cutting-edge digital services, these vendors embody the spirit of the network."
+    },
+    {
+      "id": "external-black-business-growth",
+      "type": "external",
+      "title": "Black-Owned Businesses See Record Growth in Early 2026",
+      "excerpt": "New data shows a surge in Black entrepreneurship, with technology and e-commerce leading the way.",
+      "category": "BUSINESS",
+      "source": "Black Enterprise",
+      "publishedAt": "2026-01-25",
+      "image": "/images/placeholder-external-1.jpg",
+      "featured": true,
+      "externalUrl": "https://www.blackenterprise.com"
+    },
+    {
+      "id": "external-diaspora-economics",
+      "type": "external",
+      "title": "The Economics of Diaspora: How Global Networks Are Changing Trade",
+      "excerpt": "A look at how African diaspora communities are creating new economic corridors between continents.",
+      "category": "WORLD",
+      "source": "The Root",
+      "publishedAt": "2026-01-18",
+      "image": "/images/placeholder-external-2.jpg",
+      "featured": false,
+      "externalUrl": "https://www.theroot.com"
+    },
+    {
+      "id": "external-cultural-renaissance",
+      "type": "external",
+      "title": "The New Black Cultural Renaissance: Art, Music, and Commerce Converge",
+      "excerpt": "Artists and entrepreneurs are finding new ways to monetize culture while maintaining authenticity.",
+      "category": "CULTURE",
+      "source": "Essence",
+      "publishedAt": "2026-01-12",
+      "image": "/images/placeholder-external-3.jpg",
+      "featured": false,
+      "externalUrl": "https://www.essence.com"
+    }
+  ]
+}

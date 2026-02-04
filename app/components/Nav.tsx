@@ -9,10 +9,8 @@ export default function Nav() {
         </div>
         <div className="nav-links">
           <Link href="/">HOME</Link>
-          <Link href="/marketplace">MARKETPLACE</Link>
-          <Link href="/community">COMMUNITY</Link>
-          <Link href="/resources">RESOURCES</Link>
-          <Link href="/about">ABOUT 121212</Link>
+          <Link href="/network" className="nav-network-link">ENTER THE NETWORK</Link>
+          <Link href="/about">ABOUT</Link>
         </div>
       </div>
     </nav>
