@@ -1,11 +1,42 @@
+'use client';
+
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export const metadata = {
-  title: 'Purchase Complete — 121212.black',
-  description: 'Your purchase is confirmed. Download your product below.',
-};
+function PurchaseContent() {
+  const searchParams = useSearchParams();
+  const sessionId = searchParams.get('session_id');
+  const isValid = sessionId && sessionId.startsWith('cs_');
 
-export default function PurchaseCompletePage() {
+  if (!isValid) {
+    return (
+      <>
+        <header className="hero" style={{ paddingBottom: '3rem', minHeight: 'auto' }}>
+          <div style={{
+            width: '80px', height: '80px', borderRadius: '50%',
+            background: 'rgba(230, 57, 70, 0.2)', border: '2px solid #e63946',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '2rem', margin: '0 auto 2rem',
+          }}>
+            ✗
+          </div>
+          <h1 style={{ fontSize: '2.5rem' }}>Purchase Required</h1>
+          <p className="tagline" style={{ maxWidth: '600px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
+            This page is only accessible after completing a purchase.
+            If you believe this is an error, please contact support.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/why-121212" className="cta-button">Buy Why 121212 — $1</Link>
+            <a href="mailto:support@121212.black" className="cta-button-secondary" style={{ marginTop: 0 }}>
+              Contact Support
+            </a>
+          </div>
+        </header>
+      </>
+    );
+  }
+
   return (
     <>
       <header className="hero" style={{ paddingBottom: '3rem', minHeight: 'auto' }}>
@@ -32,15 +63,15 @@ export default function PurchaseCompletePage() {
           textAlign: 'center',
         }}>
           <h3 style={{ fontSize: '1.3rem', fontWeight: 400, marginBottom: '0.5rem', color: '#fff' }}>
-            Why 121212 — The Story Behind the Network
+            Why 121212™ — The Story Behind the Network
           </h3>
           <p style={{ color: '#999', fontSize: '0.85rem', marginBottom: '2rem' }}>
             Limited Edition Digital PDF · 1 of 10,000
           </p>
 
           <a
-            href="/dl/why-121212.pdf"
-            download
+            href="/dl/why-121212-d4af37x.pdf"
+            download="Why 121212 — The Story Behind the Network.pdf"
             style={{
               display: 'inline-block',
               background: '#2a9d8f',
@@ -58,7 +89,7 @@ export default function PurchaseCompletePage() {
           </a>
 
           <p style={{ color: '#666', fontSize: '0.75rem', marginTop: '1.5rem', lineHeight: '1.6' }}>
-            Save this page — you can return to download again anytime.<br />
+            Save this page — you can return to download again while your session is active.<br />
             If the download does not start, right-click the button and select &quot;Save link as...&quot;
           </p>
         </div>
@@ -167,5 +198,17 @@ export default function PurchaseCompletePage() {
 
       </section>
     </>
+  );
+}
+
+export default function PurchaseCompletePage() {
+  return (
+    <Suspense fallback={
+      <div style={{ textAlign: 'center', padding: '12rem 2rem' }}>
+        <p style={{ color: '#999' }}>Verifying purchase...</p>
+      </div>
+    }>
+      <PurchaseContent />
+    </Suspense>
   );
 }
