@@ -55,6 +55,9 @@ export default function MarketplacePage() {
           <h2>Become a Vendor</h2>
           <p>Join the 121212 marketplace and connect with our global network of conscious consumers.</p>
           <Link href="/become-vendor" className="cta-button">Apply Now</Link>
+          <p style={{ marginTop: '2rem', fontSize: '0.8rem', color: '#666', letterSpacing: '1px' }}>
+            All transactions powered by <a href="https://121212.ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
+          </p>
         </div>
       </section>
     </>

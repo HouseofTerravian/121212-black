@@ -51,7 +51,8 @@ export default function Footer() {
         </div>
         <p className="copyright">
           © 2025 121212.black. All rights reserved.<br />
-          By the People. For the People.
+          By the People. For the People.<br />
+          All commerce powered by <a href="https://121212.ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
         </p>
       </div>
     </footer>

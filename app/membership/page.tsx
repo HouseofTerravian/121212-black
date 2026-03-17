@@ -17,6 +17,9 @@ export default function MembershipPage() {
           <div className="info-box">
             <p>121212.black is building economic infrastructure and cultural sovereignty for the Black diaspora. Every page, every transaction, every connection strengthens our network.</p>
           </div>
+          <p style={{ marginTop: '2rem', fontSize: '0.8rem', color: '#666', letterSpacing: '1px' }}>
+            All transactions powered by <a href="https://121212.ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
+          </p>
         </div>
       </section>
     </>

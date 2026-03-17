@@ -168,6 +168,9 @@ export default function NetworkPage() {
       <section className="trust-section">
         <h2>Trust &amp; Integrity</h2>
         <p>Anything purchased here is refundable. Trust is universal. Integrity is non-negotiable.</p>
+        <p style={{ marginTop: '1.5rem', fontSize: '0.85rem', color: '#666', letterSpacing: '1px' }}>
+          All transactions powered by <a href="https://121212.ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
+        </p>
       </section>
     </>
   );
