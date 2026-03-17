@@ -35,12 +35,12 @@ export default function Why121212Page() {
           2. Select your "Why 121212" product ($1.00)
           3. Under "After payment" → select "Don't show confirmation page"
              → Redirect to: https://121212.black/purchase-complete
-          4. Copy the Payment Link URL (e.g. https://buy.stripe.com/XXXXX)
+          4. Copy the Payment Link URL (e.g. https://buy.stripe.com/aFa7sK0OXd5ng20eSUbjW0a)
           5. Paste it in the href below
           ════════════════════════════════════════════════
         */}
         <a
-          href="https://buy.stripe.com/XXXXX"
+          href="https://buy.stripe.com/aFa7sK0OXd5ng20eSUbjW0a"
           className="cta-button"
         >
           BUY NOW — $1
@@ -126,7 +126,7 @@ export default function Why121212Page() {
           <p style={{ color: '#999', marginBottom: '2rem', fontSize: '1rem' }}>
             Every copy purchased strengthens the infrastructure. Name your price.
           </p>
-          <a href="https://buy.stripe.com/XXXXX" className="cta-button">BUY NOW — $1</a>
+          <a href="https://buy.stripe.com/aFa7sK0OXd5ng20eSUbjW0a" className="cta-button">BUY NOW — $1</a>
           <p style={{ marginTop: '2rem', fontSize: '0.8rem', color: '#666', letterSpacing: '1px' }}>
             All transactions powered by <a href="/ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
           </p>
