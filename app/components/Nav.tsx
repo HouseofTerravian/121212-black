@@ -10,6 +10,7 @@ export default function Nav() {
         <div className="nav-links">
           <Link href="/">HOME</Link>
           <Link href="/network" className="nav-network-link">ENTER THE NETWORK</Link>
+          <Link href="/ai">121212.AI</Link>
           <Link href="/about">ABOUT</Link>
         </div>
       </div>
