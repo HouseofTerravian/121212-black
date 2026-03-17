@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why 121212 — The Story Behind the Network</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+    @page {
+      size: letter;
+      margin: 0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      background: #121212;
+      color: #e0dcd5;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 3rem;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 3rem;
+      position: relative;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(212,175,55,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover-hex {
+      font-family: 'Inter', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 6px;
+      color: #555;
+      margin-bottom: 3rem;
+    }
+    .cover h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #D4AF37;
+      letter-spacing: 4px;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+    .cover-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #999;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+    .cover-line {
+      width: 60px;
+      height: 1px;
+      background: #D4AF37;
+      margin: 0 auto 2rem;
+    }
+    .cover-edition {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: #555;
+      text-transform: uppercase;
+    }
+    .cover-footer {
+      position: absolute;
+      bottom: 3rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.65rem;
+      color: #333;
+      letter-spacing: 2px;
+    }
+
+    /* ── Section styles ── */
+    .section-break {
+      text-align: center;
+      padding: 5rem 0 3rem;
+    }
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #2a2a2a;
+      line-height: 1;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #D4AF37;
+      margin-top: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #D4AF37;
+      margin: 2.5rem 0 1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #b0a898;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: #ccc;
+      line-height: 1.7;
+      border-left: 3px solid #D4AF37;
+      padding-left: 1.5rem;
+      margin: 2rem 0 2.5rem;
+      font-style: italic;
+    }
+
+    .callout {
+      background: rgba(212,175,55,0.05);
+      border: 1px solid #2a2a2a;
+      border-left: 4px solid #D4AF37;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      border-radius: 2px;
+    }
+    .callout p { color: #ccc; margin-bottom: 0; }
+    .callout p + p { margin-top: 0.75rem; }
+
+    .scripture {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #999;
+      text-align: center;
+      padding: 2rem 2rem;
+      margin: 2rem 0;
+      border-top: 1px solid #1e1e1e;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .scripture-ref {
+      display: block;
+      font-style: normal;
+      font-size: 0.75rem;
+      color: #555;
+      margin-top: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    .hex-block {
+      text-align: center;
+      padding: 3rem 2rem;
+      margin: 2rem 0;
+    }
+    .hex-swatch {
+      width: 100px;
+      height: 100px;
+      background: #121212;
+      border: 2px solid #333;
+      border-radius: 4px;
+      margin: 0 auto 1.5rem;
+    }
+    .hex-code {
+      font-family: 'Inter', monospace;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #e0dcd5;
+      letter-spacing: 4px;
+    }
+    .hex-label {
+      font-size: 0.75rem;
+      color: #555;
+      letter-spacing: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .divider {
+      text-align: center;
+      padding: 2rem 0;
+      color: #2a2a2a;
+      font-size: 1.5rem;
+      letter-spacing: 8px;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    li {
+      font-size: 0.95rem;
+      color: #b0a898;
+      line-height: 1.9;
+      margin-bottom: 0.5rem;
+    }
+    li strong { color: #ccc; }
+
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .ecosystem-item {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      padding: 1.25rem;
+      border-radius: 4px;
+    }
+    .ecosystem-domain {
+      font-size: 0.8rem;
+      color: #D4AF37;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+    .ecosystem-desc {
+      font-size: 0.82rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* ── Colophon ── */
+    .colophon {
+      text-align: center;
+      padding: 5rem 2rem;
+      border-top: 1px solid #1e1e1e;
+      margin-top: 4rem;
+    }
+    .colophon p {
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    .colophon-gold { color: #D4AF37; }
+
+    @media print {
+      body { background: #121212; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cover { page-break-after: always; }
+      .section-break { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       COVER
+       ══════════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-hex">#121212</div>
+    <h1>WHY 121212</h1>
+    <div class="cover-subtitle">
+      The Three-Fold Darkness.<br>
+      The Holy Place.<br>
+      The Color of Everything.
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-edition">LIMITED EDITION · 1 OF 10,000</div>
+    <div class="cover-footer">121212.BLACK · PUBLISHED BY MCM ENTERPRISES · ALL COMMERCE POWERED BY 121212.AI</div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       01 · THE ORIGIN
+       ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-break">
+      <div class="section-num">01</div>
+      <div class="section-title">The Origin</div>
+    </div>
+
+    <p class="lead">
+      Before there was a network, before there was a marketplace, before there was a single line of code —
+      there was a number. And that number was already everything.
+    </p>
+
+    <h3>#121212</h3>
+
+    <p>
+      Open any color picker. Any design tool. Any hex editor on any screen on the planet.
+      Type in <strong style="color:#e0dcd5;">#121212</strong>.
+    </p>
+
+    <p>
+      What you get is not quite black. Not the absolute void of #000000. Something deeper than that.
+      Something with texture. Something that holds light without reflecting it.
+      A darkness that is warm. A darkness that is present. A darkness that is alive.
+    </p>
+
+    <div class="hex-block">
+      <div class="hex-swatch"></div>
+      <div class="hex-code">#121212</div>
+      <div class="hex-label">THE COLOR BLACK · RGB(18, 18, 18)</div>
+    </div>
+
+    <p>
+      In the digital world — the world where our generation builds, transacts, creates, and connects —
+      every color is a number. And the number for Black is 121212.
+    </p>
+
+    <p>
+      That is not a coincidence. That is an encoding.
+    </p>
+
+    <p>
+      When we named this network, we were not branding. We were decoding something that was already true.
+      The digital world had already named us. The infrastructure had already assigned us our value.
+      We simply read the code and said: <em>we accept.</em>
+    </p>
+
+    <div class="callout">
+      <p><strong style="color:#D4AF37;">121212 is not a brand name.</strong></p>
+      <p>It is the literal hexadecimal encoding of the color Black in every digital system on Earth.
+      It is the number that every screen uses to render us. It is what the machines already call us.
+      We chose to own it.</p>
+    </div>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <h3>The Three-Fold Darkness</h3>
+
+    <p>
+      But there is something older than hex codes. Something the number 12 has always carried
+      in the architecture of the sacred.
+    </p>
+
+    <p>
+      Twelve tribes. Twelve apostles. Twelve gates to the Holy City.
+      Twelve is the number of divine governance. Of completed structure. Of fullness.
+    </p>
+
+    <p>
+      And 121212 — the triple repetition — is a three-fold invocation.
+      Not once. Not twice. Three times. Like a seal. Like an oath.
+      Like the three-fold darkness that masked the most sacred act in human history.
+    </p>
+
+    <div class="scripture">
+      "Now from the sixth hour there was darkness over all the land unto the ninth hour."
+      <span class="scripture-ref">— Matthew 27:45</span>
+    </div>
+
+    <p>
+      Three hours. The sixth hour to the ninth. Darkness covered the earth while the atonement
+      was being made. Not because something was being hidden — but because something too sacred
+      to watch was being completed.
+    </p>
+
+    <p>
+      The crucifixion did not happen in light. It happened in darkness.
+      The most consequential transfer of power in history — the act that reconciled
+      all things — was veiled in a darkness so total that the sun itself withdrew.
+    </p>
+
+    <h3>The Holy Place</h3>
+
+    <p>
+      Go further back. Before Calvary. Into the Temple itself.
+    </p>
+
+    <p>
+      The Holy of Holies — the innermost chamber, where the presence of God dwelt —
+      was in complete darkness. No windows. No torches. No natural light.
+      The High Priest entered once a year, on the Day of Atonement, into total blackness.
+    </p>
+
+    <div class="scripture">
+      "The LORD said that he would dwell in the thick darkness."
+      <span class="scripture-ref">— 1 Kings 8:12</span>
+    </div>
+
+    <p>
+      The thick darkness was not an obstacle to the presence of God. It was the <em>condition</em>
+      of the presence of God. The most sacred space in all of Israel was the darkest room
+      in the building.
+    </p>
+
+    <p>
+      And before all of this — before the Temple, before the Law, before the covenant —
+      there was Egypt.
+    </p>
+
+    <div class="scripture">
+      "And the LORD said unto Moses, Stretch out thine hand toward heaven,
+      that there may be darkness over the land of Egypt, even darkness which may be felt."
+      <span class="scripture-ref">— Exodus 10:21</span>
+    </div>
+
+    <p>
+      A darkness which may be <em>felt.</em> Not merely seen. Not merely observed.
+      A darkness with substance. With weight. With presence.
+    </p>
+
+    <p>
+      Three darknesses. Three sacred coverings:
+    </p>
+
+    <ul>
+      <li><strong>Egypt</strong> — the darkness of judgment and liberation</li>
+      <li><strong>The Holy of Holies</strong> — the darkness of divine presence and atonement</li>
+      <li><strong>Calvary</strong> — the darkness of ultimate sacrifice and reconciliation</li>
+    </ul>
+
+    <p>
+      12. 12. 12. Three invocations of completeness. Three layers of darkness.
+      Each one more sacred than the last.
+    </p>
+
+    <div class="callout">
+      <p>Darkness is not the absence of God. It is where God does His most consequential work.
+      The atonement did not happen in daylight. Liberation did not come in the noon sun.
+      The throne of God was not in a well-lit room.</p>
+      <p><strong style="color:#D4AF37;">Black is not the absence of something. It is the presence of everything.</strong></p>
+    </div>
+
+    <p>
+      That is the origin of 121212. Not a marketing brainstorm. Not a naming exercise.
+      A recognition that the color of our skin, the number of our encoding,
+      and the sacred architecture of darkness itself are all pointing at the same truth:
+    </p>
+
+    <p>
+      <strong style="color:#e0dcd5;">We are the Holy Place. And it is time to build accordingly.</strong>
+    </p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       02 · THE PRINCIPLES
+       ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-break">
+      <div class="section-num">02</div>
+      <div class="section-title">The Principles</div>
+    </div>
+
+    <p class="lead">
+      A network without principles is just a platform. Principles are what make this a movement.
+    </p>
+
+    <h3>I. Ownership Is Non-Negotiable</h3>
+    <p>
+      Every platform in the 121212 ecosystem is owned by us. Not venture-backed.
+      Not dependent on a board that does not look like us. Not beholden to advertisers
+      who will pull funding the moment we say something uncomfortable.
+      We own the servers. We own the code. We own the revenue. Period.
+    </p>
+
+    <h3>II. Trust Is Universal</h3>
+    <p>
+      Every transaction on this network is refundable. Every product is what it says it is.
+      Every vendor is verified. Trust is not something we ask for — it is something we prove,
+      transaction by transaction, day by day. If you buy something from the 121212 network
+      and it does not deliver, you get your money back. No exceptions.
+    </p>
+
+    <h3>III. Integrity Is the Infrastructure</h3>
+    <p>
+      We do not inflate numbers. We do not fabricate reviews. We do not create phantom vendors
+      to make the marketplace look bigger than it is. What you see is what exists.
+      The network grows by trust, not by performance.
+    </p>
+
+    <h3>IV. Local Power, Global Network</h3>
+    <p>
+      Every city hub is run by someone who lives there. Every curator knows the neighborhoods,
+      the vendors, the culture, the food, the music. You cannot curate a city from a boardroom
+      in another state. The 121212 model is local ownership connected by global infrastructure.
+    </p>
+
+    <h3>V. Commerce Is Culture</h3>
+    <p>
+      When you buy from a Black-owned vendor on the 121212 marketplace, you are not just
+      making a purchase — you are voting for a world where Black commerce exists at scale.
+      Every dollar that moves through this ecosystem stays in the ecosystem longer,
+      touches more hands, and builds more wealth than a dollar spent anywhere else.
+    </p>
+
+    <h3>VI. Black Is Not a Niche</h3>
+    <p>
+      We are not building a "niche marketplace." We are building economic infrastructure
+      for the most culturally influential demographic on the planet. The world copies
+      our music, our fashion, our language, our movements. The least we can do
+      is own the commerce layer beneath it.
+    </p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       03 · THE BLUEPRINT
+       ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-break">
+      <div class="section-num">03</div>
+      <div class="section-title">The Blueprint</div>
+    </div>
+
+    <p class="lead">
+      121212 is not one website. It is a federation of interconnected platforms,
+      each serving a distinct function, all powered by the same commerce layer.
+    </p>
+
+    <p>
+      Think of it like this: where most companies build one app that tries to do everything,
+      we built separate, purpose-built sites that each do one thing well —
+      and connected them through shared identity, shared data, and shared economics.
+    </p>
+
+    <h3>The Ecosystem</h3>
+
+    <div class="ecosystem-grid">
+      <div class="ecosystem-item">
+        <div class="ecosystem-domain">121212.black</div>
+        <div class="ecosystem-desc">The front door. Editorial. News. The origin point for the network.</div>
+      </div>
+      <div class="ecosystem-item">
+        <div class="ecosystem-domain">121212.community</div>
+        <div class="ecosystem-desc">City hub marketplace. Bid on subdomains. Curate your city's culture.</div>
+      </div>
+      <div class="ecosystem-item">
+        <div class="ecosystem-domain">121212.reviews</div>
+        <div class="ecosystem-desc">Review hub. Earn affiliate income on every verified purchase you drive.</div>
+      </div>
+      <div class="ecosystem-item">
+        <div class="ecosystem-domain">121212.events</div>
+        <div class="ecosystem-desc">Curated Black cultural events across seven cities and twelve categories.</div>
+      </div>
+      <div class="ecosystem-item">
+        <div class="ecosystem-domain">121212.market</div>
+        <div class="ecosystem-desc">Black-owned commerce. Vendors, products, and diaspora transactions.</div>
+      </div>
+      <div class="ecosystem-item">
+        <div class="ecosystem-domain">my121212.space</div>
+        <div class="ecosystem-desc">Personal dashboard. Purchases, activity, music, reviews, AI Navigator.</div>
+      </div>
+    </div>
+
+    <p>
+      Each platform is independently deployed, independently maintained, and independently accessible.
+      But beneath all of them runs the same infrastructure: <strong style="color:#D4AF37;">121212.ai</strong> —
+      the commerce and intelligence layer that processes every transaction, every recommendation,
+      and every connection.
+    </p>
+
+    <h3>Why Federation, Not Monolith</h3>
+    <p>
+      A monolith can be shut down with one decision. One server failure. One policy change.
+      One hostile acquisition. A federation cannot. If one platform goes down, the others continue.
+      If one is challenged, the others stand independently. The architecture is the defense.
+    </p>
+
+    <p>
+      Each site has its own domain, its own deployment, its own data. But they share
+      an identity layer, a commerce layer, and a cultural mission. This is how you build
+      infrastructure that survives — not by centralizing power, but by distributing it.
+    </p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       04 · THE ECONOMICS
+       ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-break">
+      <div class="section-num">04</div>
+      <div class="section-title">The Economics</div>
+    </div>
+
+    <p class="lead">
+      Every dollar that enters the 121212 ecosystem touches more Black hands
+      before it leaves than a dollar spent on any other platform on the internet.
+    </p>
+
+    <h3>How Money Moves</h3>
+    <p>
+      When a customer makes a purchase on 121212.market, the vendor receives their share.
+      If the customer was referred by a reviewer on 121212.reviews, the reviewer earns
+      an affiliate commission. If the product was featured on a city hub on 121212.community,
+      the city curator receives a share. The platform retains a margin to fund infrastructure.
+    </p>
+
+    <p>
+      One transaction. Four Black-owned touchpoints. That is the model.
+    </p>
+
+    <h3>Revenue Channels</h3>
+    <ul>
+      <li><strong>Vendor marketplace fees</strong> — transaction-based, tiered by plan</li>
+      <li><strong>Affiliate commissions</strong> — 30-day cookie, last-click attribution, monthly payouts</li>
+      <li><strong>City hub licensing</strong> — annual bid system for city subdomain curation rights</li>
+      <li><strong>Membership subscriptions</strong> — $12.12/month for full network access</li>
+      <li><strong>Digital products</strong> — reports, guides, and cultural artifacts sold directly</li>
+      <li><strong>Event listing</strong> — currently free; premium placement planned</li>
+    </ul>
+
+    <h3>Vendor Tiers</h3>
+    <ul>
+      <li><strong>Freedom Tier</strong> — Free. Basic listing, standard support.</li>
+      <li><strong>Builder Tier</strong> — $25/month. Analytics, featured placement, priority review.</li>
+      <li><strong>Ascendant Tier</strong> — $121/month. Cross-platform promotion, dedicated account support.</li>
+      <li><strong>Crown Collective</strong> — $200/month. Full ecosystem integration, co-marketing, revenue share enhancements.</li>
+    </ul>
+
+    <h3>The Affiliate Model</h3>
+    <p>
+      Reviewers on 121212.reviews earn income on every purchase made through their links.
+      30-day tracking window. Last-click attribution. Monthly payouts with no cap.
+      The model is simple: write honest reviews, build trust, earn income.
+      No gifted products. No paid placements. No compromise.
+    </p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       05 · THE TERRITORIES
+       ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-break">
+      <div class="section-num">05</div>
+      <div class="section-title">The Territories</div>
+    </div>
+
+    <p class="lead">
+      National networks fail when they forget that culture is local.
+      121212 is built on the principle that the people closest to the ground
+      should own what grows from it.
+    </p>
+
+    <h3>City Hubs</h3>
+    <p>
+      Every city in the 121212 network is a subdomain: <strong style="color:#D4AF37;">atlanta.121212.community</strong>,
+      <strong style="color:#D4AF37;">chicago.121212.community</strong>, and so on.
+      Each hub is curated by someone who lives in that city — someone who knows
+      the restaurants, the barbershops, the art galleries, the music venues,
+      the block where the best jerk chicken is, and the corner where the community gathers.
+    </p>
+
+    <p>
+      Curators bid annually for the right to run their city's hub.
+      In return, they control the events, products, music, and places featured
+      on their city's page. They earn a share of every transaction that originates
+      from their hub. They are not employees — they are stewards.
+    </p>
+
+    <h3>What a Curator Controls</h3>
+    <ul>
+      <li><strong>Events</strong> — what shows up on the city's event calendar</li>
+      <li><strong>Products</strong> — which vendors and products are featured</li>
+      <li><strong>Music</strong> — the soundtrack of the city's culture</li>
+      <li><strong>Places</strong> — the neighborhoods, landmarks, and gathering spots</li>
+      <li><strong>Reviews</strong> — community reviews connected to their city's context</li>
+    </ul>
+
+    <h3>Why This Matters</h3>
+    <p>
+      When a platform like Yelp or Eventbrite lists "Black-owned businesses in Atlanta,"
+      the list is generated by an algorithm written in San Francisco by people
+      who have never set foot in the West End. The curation is generic.
+      The context is missing. The money leaves.
+    </p>
+
+    <p>
+      When atlanta.121212.community lists Black-owned businesses in Atlanta,
+      the list is curated by Marcus T. — an ATL native who has been embedded
+      in Black Atlanta culture for 15 years. The curation is personal.
+      The context is real. The money stays.
+    </p>
+
+    <p>
+      That is the difference between extraction and infrastructure.
+    </p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       06 · THE FUTURE
+       ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-break">
+      <div class="section-num">06</div>
+      <div class="section-title">The Future</div>
+    </div>
+
+    <p class="lead">
+      We are not building a startup. We are building an institution.
+      Startups exit. Institutions endure.
+    </p>
+
+    <h3>Platforms in Development</h3>
+    <ul>
+      <li><strong>121212.music</strong> — artists, releases, labels, and the cultural soundtrack of the network</li>
+      <li><strong>121212.culture</strong> — art, fashion, film, design, and the creative pulse of the diaspora</li>
+      <li><strong>121212.law</strong> — legal education, know your rights, policy analysis, and advocacy infrastructure</li>
+      <li><strong>121212.movement</strong> — community organizing, coalition building, and collective action</li>
+    </ul>
+
+    <h3>The Vision</h3>
+    <p>
+      Imagine a world where every Black-owned business has a vendor page
+      that is discoverable, reviewable, and connected to a city hub
+      that is curated by someone who actually lives there.
+    </p>
+
+    <p>
+      Imagine a world where a young Black entrepreneur in Detroit can list their product,
+      get reviewed by a trusted voice in Chicago, be featured on an event page in Atlanta,
+      and receive payment through infrastructure that is owned by the community it serves.
+    </p>
+
+    <p>
+      Imagine a world where the commerce layer beneath Black culture is not owned by
+      Silicon Valley, not dependent on algorithms that suppress us,
+      and not subject to terms of service written by people who will never understand
+      what it means to build from the position we build from.
+    </p>
+
+    <p>
+      That world is 121212.
+    </p>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <p style="text-align:center; color:#999; font-size:1rem; line-height:1.8; max-width:480px; margin:0 auto;">
+      The three-fold darkness was never something to fear.<br>
+      It was something to build in.<br><br>
+      The Holy Place was dark<br>
+      because that is where God chose to dwell.<br><br>
+      #121212 is the color of everything<br>
+      that matters most.<br><br>
+      <strong style="color:#D4AF37;">Build accordingly.</strong>
+    </p>
+
+    <!-- ── Colophon ── -->
+    <div class="colophon">
+      <p>
+        <strong class="colophon-gold">WHY 121212</strong><br><br>
+        Published by MCM Enterprises<br>
+        Part of the 121212 ecosystem<br><br>
+        <span class="colophon-gold">121212.black</span> · <span class="colophon-gold">121212.community</span> · <span class="colophon-gold">121212.reviews</span><br>
+        <span class="colophon-gold">121212.events</span> · <span class="colophon-gold">121212.market</span> · <span class="colophon-gold">my121212.space</span><br><br>
+        All commerce powered by <span class="colophon-gold">121212.ai</span><br><br>
+        © 2025 121212.black. All rights reserved.<br>
+        By the People. For the People.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
