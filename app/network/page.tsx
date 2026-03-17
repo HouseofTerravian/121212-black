@@ -35,7 +35,7 @@ const LIVE_SITES = [
     category: 'MARKETPLACE',
     title: 'Black-Owned Commerce At Scale',
     description: 'From Atlanta to Accra — vendors, transactions, and a growing diaspora marketplace we built, we trust, we own.',
-    url: 'https://121212-gbm.vercel.app',
+    url: 'https://121212.market',
     domain: '121212.market',
     tier: 'Vendor Access',
     status: 'live',
