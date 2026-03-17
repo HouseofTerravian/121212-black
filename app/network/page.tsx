@@ -1,82 +1,143 @@
-import Link from 'next/link';
-
 export const metadata = {
   title: 'Enter The Network - 121212.black',
-  description: 'Access the full 121212 ecosystem: Marketplace, Movement, Media, Culture, Global Routes, and Legal Resources.',
+  description: 'Access the full 121212 ecosystem: Community, Reviews, Events, Marketplace, Music, Culture, Law, and your personal space.',
 };
+
+const LIVE_SITES = [
+  {
+    category: 'COMMUNITY',
+    title: 'Own Your City\'s Black Cultural Hub',
+    description: 'City-by-city cultural infrastructure. Bid on a city subdomain and curate the events, products, music, and places that define Black life where you live.',
+    url: 'https://121212.community',
+    domain: '121212.community',
+    tier: 'Active Hubs',
+    status: 'live',
+  },
+  {
+    category: 'REVIEWS',
+    title: 'Real Reviews. Real People. Real Income.',
+    description: 'Trusted reviews of Black-owned products, music, events, services, and experiences. Reviewers earn affiliate income on every purchase they drive.',
+    url: 'https://121212.reviews',
+    domain: '121212.reviews',
+    tier: 'Affiliate Earnings',
+    status: 'live',
+  },
+  {
+    category: 'EVENTS',
+    title: 'Every Event Worth Going To',
+    description: 'Curated Black cultural events across seven cities — music, tech, business, art, food, culture. If it matters, it\'s here.',
+    url: 'https://121212.events',
+    domain: '121212.events',
+    tier: 'Free to Browse',
+    status: 'live',
+  },
+  {
+    category: 'MARKETPLACE',
+    title: 'Black-Owned Commerce At Scale',
+    description: 'From Atlanta to Accra — vendors, transactions, and a growing diaspora marketplace we built, we trust, we own.',
+    url: 'https://121212-gbm.vercel.app',
+    domain: '121212.market',
+    tier: 'Vendor Access',
+    status: 'live',
+  },
+  {
+    category: 'YOUR SPACE',
+    title: 'Your Personal 121212 Dashboard',
+    description: 'Everything in one place — your purchases, activity, reviews, music, and AI Navigator. Your corner of the ecosystem.',
+    url: 'https://my121212.space',
+    domain: 'my121212.space',
+    tier: 'Members Only',
+    status: 'live',
+  },
+];
+
+const COMING_SOON = [
+  {
+    category: 'MUSIC',
+    title: 'The Sound of the Movement',
+    description: 'Artists, albums, releases, and the cultural heartbeat of the diaspora.',
+    domain: '121212.music',
+  },
+  {
+    category: 'CULTURE',
+    title: 'Art. Fashion. Film. Design.',
+    description: 'Celebrating the creative pulse of the Black world — from galleries to runways to screens.',
+    domain: '121212.culture',
+  },
+  {
+    category: 'LAW & POLICY',
+    title: 'Know Your Rights, Build Your Power',
+    description: 'Legal education, policy analysis, and advocacy — equipping the network with knowledge and protection.',
+    domain: '121212.law',
+  },
+  {
+    category: 'MOVEMENT',
+    title: 'Community. Organizing. Action.',
+    description: 'United voices, coalitions, and builders running economic infrastructure city by city.',
+    domain: '121212.movement',
+  },
+];
 
 export default function NetworkPage() {
   return (
     <>
       <header className="hero">
         <h1>The 121212 Network</h1>
-        <p className="tagline">Six Branches of Commerce. One Movement.</p>
+        <p className="tagline">One Ecosystem. Built For Us. Owned By Us.</p>
       </header>
 
+      {/* ── Live Sites ── */}
       <section className="featured-content">
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Enter a Platform</h2>
+        <p className="section-subtitle">Each site is live, independent, and connected to the full network.</p>
+
         <div className="content-grid">
-          <div className="content-card">
-            <div className="card-category">MARKETPLACE</div>
-            <h3>Black-Owned Commerce At Scale</h3>
-            <p>From Atlanta to Accra — with servers, vendors, $25M in tracked transactions, and a growing diaspora marketplace we built, we trust.</p>
-            <div className="card-footer">
-              <Link href="/marketplace" className="card-link">Shop Commerce</Link>
-              <span className="card-tier">Tier 1</span>
-            </div>
-          </div>
-
-          <div className="content-card">
-            <div className="card-category">MOVEMENT</div>
-            <h3>32 Cities, One Movement</h3>
-            <p>United voices, coalitions met and builders running economic infrastructure city by city, sanctuary at a time.</p>
-            <div className="card-footer">
-              <Link href="/territories" className="card-link">See Movement</Link>
-              <span className="card-tier">Tier 1</span>
-            </div>
-          </div>
-
-          <div className="content-card">
-            <div className="card-category">MEDIA</div>
-            <h3>Stories That Shape Culture</h3>
-            <p>Testimonies, documentaries, and coverage showcasing Black resilience, entrepreneurship, and our collective stories narratives.</p>
-            <div className="card-footer">
-              <Link href="/media" className="card-link">Read Stories</Link>
-              <span className="card-tier">Free Access</span>
-            </div>
-          </div>
-
-          <div className="content-card">
-            <div className="card-category">CULTURE</div>
-            <h3>The Sound of Our Movement</h3>
-            <p>Artists, albums, covers, and creative creatives — celebrating the cultural heartbeat of the diaspora.</p>
-            <div className="card-footer">
-              <Link href="/culture" className="card-link">Crown Exclusives</Link>
-              <span className="card-tier">Artist Access</span>
-            </div>
-          </div>
-
-          <div className="content-card">
-            <div className="card-category">WORLD // DIASPORA</div>
-            <h3>From Harlem to Lagos to London</h3>
-            <p>City spotlights, regional hubs, and global movement — mapping the physical presence of the new Black renaissance.</p>
-            <div className="card-footer">
-              <Link href="/global" className="card-link">Global Routes</Link>
-              <span className="card-tier">Route Map</span>
-            </div>
-          </div>
-
-          <div className="content-card">
-            <div className="card-category">LAW &amp; POLICY</div>
-            <h3>Know Your Rights, Build Your Power</h3>
-            <p>Legal education, policy analysis, and advocacy structure — equipping the network with knowledge and protection.</p>
-            <div className="card-footer">
-              <Link href="/legal" className="card-link">Education &amp; Advocacy</Link>
-              <span className="card-tier">Resources</span>
-            </div>
-          </div>
+          {LIVE_SITES.map((site) => (
+            <a
+              key={site.domain}
+              href={site.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="content-card"
+              style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column' }}
+            >
+              <div className="card-category">{site.category}</div>
+              <h3 style={{ flex: 1 }}>{site.title}</h3>
+              <p>{site.description}</p>
+              <div className="card-footer">
+                <span className="card-link">{site.domain} →</span>
+                <span className="card-tier">{site.tier}</span>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 
+      {/* ── Coming Soon ── */}
+      <section className="featured-content" style={{ marginTop: '2rem' }}>
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Expanding</h2>
+        <p className="section-subtitle">These platforms are in development. The network is growing.</p>
+
+        <div className="content-grid">
+          {COMING_SOON.map((site) => (
+            <div
+              key={site.domain}
+              className="content-card"
+              style={{ opacity: 0.6, cursor: 'default' }}
+            >
+              <div className="card-category">{site.category}</div>
+              <h3>{site.title}</h3>
+              <p>{site.description}</p>
+              <div className="card-footer">
+                <span style={{ color: '#666', fontSize: '0.85rem', letterSpacing: '1px' }}>{site.domain}</span>
+                <span className="card-tier" style={{ color: '#666' }}>Coming Soon</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Support ── */}
       <section className="support-section">
         <h2 className="section-title">Support The Network</h2>
 
@@ -84,92 +145,24 @@ export default function NetworkPage() {
           <div className="support-card">
             <h3>The Annual 12:12 Report</h3>
             <div className="price">$12.12</div>
-            <p>Comprehensive analysis of Black economic infrastructure and network progress. Five tier members.</p>
-            <Link href="/report" className="support-button">Add to Cart</Link>
+            <p>Comprehensive analysis of Black economic infrastructure and network progress.</p>
+            <a href="/report" className="support-button">Add to Cart</a>
           </div>
 
           <div className="support-card">
             <h3>Why 121212</h3>
             <div className="price">$1+ (Name Your Price)</div>
             <p>Limited memorabilia. The story and ideals behind the 121212 network. Capped at 10,000 copies.</p>
-            <Link href="/why-121212" className="support-button">Name Your Price</Link>
+            <a href="/why-121212" className="support-button">Name Your Price</a>
           </div>
 
           <div className="support-card">
             <h3>121212 Membership</h3>
             <div className="price">$12.12/month</div>
             <p>Full access to network, resources, reports and community infrastructure.</p>
-            <Link href="/membership" className="support-button">Join the Network</Link>
+            <a href="/membership" className="support-button">Join the Network</a>
           </div>
         </div>
-      </section>
-
-      <section className="vendor-section">
-        <h2 className="section-title">Vendor Plans</h2>
-
-        <div className="vendor-grid">
-          <div className="vendor-card">
-            <h3>Freedom Tier</h3>
-            <div className="price">Free</div>
-          </div>
-
-          <div className="vendor-card">
-            <h3>Builder Tier</h3>
-            <div className="price">$25/mo</div>
-          </div>
-
-          <div className="vendor-card highlighted">
-            <h3>Ascendant Tier</h3>
-            <div className="price">$121/mo</div>
-          </div>
-
-          <div className="vendor-card">
-            <h3>Crown Collective</h3>
-            <div className="price">$200/mo</div>
-          </div>
-        </div>
-      </section>
-
-      <section className="territory-section">
-        <h2 className="section-title">Territory Acquisition Portal</h2>
-        <p className="section-subtitle">Claim stewardship over a city, region, or territory. Curate vendors, elevate culture, and share in the revenue your community generates.</p>
-
-        <div className="territory-grid">
-          <div className="territory-card">
-            <div className="territory-header">
-              <div>
-                <h3>Atlanta, GA</h3>
-                <div className="tier-badge">TIER 1</div>
-              </div>
-              <span className="status-badge claimed">CLAIMED</span>
-            </div>
-            <div className="price">$10,000+</div>
-          </div>
-
-          <div className="territory-card">
-            <div className="territory-header">
-              <div>
-                <h3>Lagos, Nigeria</h3>
-                <div className="tier-badge">TIER 1</div>
-              </div>
-              <span className="status-badge available">FOREVER T1</span>
-            </div>
-            <div className="price">$50,000+</div>
-          </div>
-
-          <div className="territory-card">
-            <div className="territory-header">
-              <div>
-                <h3>Charlotte, NC</h3>
-                <div className="tier-badge">TIER 1</div>
-              </div>
-              <span className="status-badge open">OPEN</span>
-            </div>
-            <div className="price">$5,000+</div>
-          </div>
-        </div>
-
-        <Link href="/territories" className="cta-button-secondary">BROWSE ALL TERRITORIES</Link>
       </section>
 
       <section className="trust-section">
