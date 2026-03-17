@@ -151,9 +151,9 @@ export default function NetworkPage() {
 
           <div className="support-card">
             <h3>Why 121212</h3>
-            <div className="price">$1+ (Name Your Price)</div>
+            <div className="price">$1</div>
             <p>Limited memorabilia. The story and ideals behind the 121212 network. Capped at 10,000 copies.</p>
-            <a href="/why-121212" className="support-button">Name Your Price</a>
+            <a href="/why-121212" className="support-button">Buy Now</a>
           </div>
 
           <div className="support-card">

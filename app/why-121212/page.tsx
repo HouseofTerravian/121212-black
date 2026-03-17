@@ -18,34 +18,32 @@ export default function Why121212Page() {
           Why it exists. What it&apos;s building. Where it&apos;s going.
         </p>
         <div style={{ fontSize: '2rem', color: '#D4AF37', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-          $1+
+          $1
         </div>
         <div style={{ fontSize: '0.85rem', color: '#999', marginBottom: '2rem' }}>
-          Name Your Price · $1 minimum · Capped at 10,000 copies
+          Digital PDF · Instant Download · Capped at 10,000 copies
         </div>
 
         {/*
           ════════════════════════════════════════════════
-          PAYHIP BUY BUTTON
+          STRIPE PAYMENT LINK
           ════════════════════════════════════════════════
-          Replace the href below with your actual Payhip product URL.
+          Replace the href below with your Stripe Payment Link URL.
 
           To get this URL:
-          1. Go to payhip.com → Products → Add Product → Digital Download
-          2. Upload your "Why 121212" PDF
-          3. Set price to "Pay What You Want" with $1 minimum
-          4. In product settings → "After Purchase" → set redirect URL to:
-             https://121212.black/purchase-complete
-          5. Copy the product URL (e.g. https://payhip.com/b/XXXXX)
-          6. Paste it in the href below
+          1. Go to dashboard.stripe.com → Payment Links → + New
+          2. Select your "Why 121212" product ($1.00)
+          3. Under "After payment" → select "Don't show confirmation page"
+             → Redirect to: https://121212.black/purchase-complete
+          4. Copy the Payment Link URL (e.g. https://buy.stripe.com/XXXXX)
+          5. Paste it in the href below
           ════════════════════════════════════════════════
         */}
         <a
-          href="https://payhip.com/b/XXXXX"
+          href="https://buy.stripe.com/XXXXX"
           className="cta-button"
-          data-payhip-product="XXXXX"
         >
-          BUY NOW — NAME YOUR PRICE
+          BUY NOW — $1
         </a>
       </header>
 
@@ -85,7 +83,7 @@ export default function Why121212Page() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.5rem' }}>
             {[
               { label: 'FORMAT', value: 'Digital PDF' },
-              { label: 'PRICE', value: '$1+ (Name Your Price)' },
+              { label: 'PRICE', value: '$1.00' },
               { label: 'DELIVERY', value: 'Instant download via email' },
               { label: 'LIMITED TO', value: '10,000 copies' },
               { label: 'REFUND POLICY', value: 'Full refund within 30 days' },
@@ -104,10 +102,10 @@ export default function Why121212Page() {
           <h2 style={{ fontSize: '1.5rem', fontWeight: 300, color: '#D4AF37', marginBottom: '1rem' }}>How It Works</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {[
-              { step: '1', text: 'Click "Buy Now" and name your price ($1 minimum).' },
-              { step: '2', text: 'Enter your email and complete payment securely via Payhip.' },
-              { step: '3', text: 'Receive your PDF download link instantly via email.' },
-              { step: '4', text: 'You\'re redirected here to your confirmation page.' },
+              { step: '1', text: 'Click "Buy Now" — you\'ll be taken to a secure Stripe checkout.' },
+              { step: '2', text: 'Enter your email and payment details. Stripe processes the transaction.' },
+              { step: '3', text: 'You\'re redirected to your download page instantly after payment.' },
+              { step: '4', text: 'Download your PDF. A receipt is emailed to you by Stripe.' },
             ].map((s) => (
               <div key={s.step} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                 <span style={{
@@ -128,7 +126,7 @@ export default function Why121212Page() {
           <p style={{ color: '#999', marginBottom: '2rem', fontSize: '1rem' }}>
             Every copy purchased strengthens the infrastructure. Name your price.
           </p>
-          <a href="https://payhip.com/b/XXXXX" className="cta-button">BUY NOW — NAME YOUR PRICE</a>
+          <a href="https://buy.stripe.com/XXXXX" className="cta-button">BUY NOW — $1</a>
           <p style={{ marginTop: '2rem', fontSize: '0.8rem', color: '#666', letterSpacing: '1px' }}>
             All transactions powered by <a href="/ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
           </p>
