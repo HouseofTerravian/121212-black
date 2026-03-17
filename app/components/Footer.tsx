@@ -50,9 +50,10 @@ export default function Footer() {
           <Link href="/refund-policy">REFUND POLICY</Link>
         </div>
         <p className="copyright">
-          © 2025 121212.black. All rights reserved.<br />
-          By the People. For the People.<br />
-          All commerce powered by <a href="https://121212.ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
+          © 2025–2026 Chude Muonelo. All Rights Reserved.<br />
+          Operated by MCM Enterprises, an unregistered DBA of SlateRiver LLC, a New Mexico LLC.<br />
+          All intellectual property is owned by Chude Muonelo and licensed to SlateRiver LLC.<br />
+          All commerce powered by <a href="https://121212.black/ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
         </p>
       </div>
     </footer>
