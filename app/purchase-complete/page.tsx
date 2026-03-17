@@ -1,0 +1,131 @@
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Purchase Complete — 121212.black',
+  description: 'Your purchase is confirmed. Thank you for supporting the 121212 network.',
+};
+
+export default function PurchaseCompletePage() {
+  return (
+    <>
+      <header className="hero" style={{ paddingBottom: '3rem', minHeight: 'auto' }}>
+        <div style={{
+          width: '80px', height: '80px', borderRadius: '50%',
+          background: 'rgba(42, 157, 143, 0.2)', border: '2px solid #2a9d8f',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: '2rem', margin: '0 auto 2rem',
+        }}>
+          ✓
+        </div>
+        <h1 style={{ fontSize: '3rem' }}>Purchase Complete.</h1>
+        <p className="tagline" style={{ maxWidth: '600px', margin: '0 auto', lineHeight: '1.8' }}>
+          Thank you for supporting the 121212 network. Your transaction has been processed.
+        </p>
+      </header>
+
+      <section style={{ maxWidth: '800px', margin: '0 auto', padding: '0 2rem 4rem' }}>
+
+        {/* Delivery Info */}
+        <div style={{
+          background: '#1a1a1a', border: '1px solid #2a2a2a',
+          borderLeft: '4px solid #2a9d8f', padding: '2rem',
+          borderRadius: '4px', marginBottom: '2rem',
+        }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 400, marginBottom: '1rem', color: '#2a9d8f' }}>
+            Your Download
+          </h3>
+          <p style={{ color: '#ccc', lineHeight: '1.8', fontSize: '0.95rem', marginBottom: '0.75rem' }}>
+            A download link has been sent to the email you provided at checkout.
+            Check your inbox — it should arrive within a few minutes.
+          </p>
+          <p style={{ color: '#999', fontSize: '0.85rem', lineHeight: '1.6' }}>
+            Didn&apos;t receive it? Check your spam folder. If it&apos;s still missing after 10 minutes,
+            contact us at <a href="mailto:support@121212.black" style={{ color: '#D4AF37', textDecoration: 'none' }}>support@121212.black</a>.
+          </p>
+        </div>
+
+        {/* What You Purchased */}
+        <div style={{
+          background: '#1a1a1a', border: '1px solid #2a2a2a',
+          padding: '2rem', borderRadius: '4px', marginBottom: '2rem',
+        }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 400, marginBottom: '1.25rem' }}>
+            What Happens Next
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+              <span style={{ color: '#D4AF37', fontSize: '1rem', flexShrink: 0 }}>01</span>
+              <p style={{ color: '#ccc', fontSize: '0.9rem', lineHeight: '1.7', margin: 0 }}>
+                <strong style={{ color: '#fff' }}>Download your product</strong> — via the link sent to your email. The link remains active for 30 days.
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+              <span style={{ color: '#D4AF37', fontSize: '1rem', flexShrink: 0 }}>02</span>
+              <p style={{ color: '#ccc', fontSize: '0.9rem', lineHeight: '1.7', margin: 0 }}>
+                <strong style={{ color: '#fff' }}>Explore the network</strong> — your purchase supports every platform in the 121212 ecosystem.
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+              <span style={{ color: '#D4AF37', fontSize: '1rem', flexShrink: 0 }}>03</span>
+              <p style={{ color: '#ccc', fontSize: '0.9rem', lineHeight: '1.7', margin: 0 }}>
+                <strong style={{ color: '#fff' }}>Share it forward</strong> — tell someone about 121212. The network grows through trust, not ads.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Ecosystem Links */}
+        <div style={{
+          background: '#1a1a1a', border: '1px solid #2a2a2a',
+          padding: '2rem', borderRadius: '4px', marginBottom: '2rem',
+        }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 400, marginBottom: '1.25rem' }}>
+            Continue Exploring
+          </h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+            {[
+              { name: '121212.community', url: 'https://121212.community', label: 'City Hubs' },
+              { name: '121212.reviews', url: 'https://121212.reviews', label: 'Reviews' },
+              { name: '121212.events', url: 'https://121212.events', label: 'Events' },
+              { name: '121212.market', url: 'https://121212.market', label: 'Marketplace' },
+            ].map((site) => (
+              <a
+                key={site.name}
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'block', padding: '1rem', background: '#111',
+                  border: '1px solid #2a2a2a', borderRadius: '4px',
+                  textDecoration: 'none', transition: 'border-color 0.3s',
+                }}
+              >
+                <div style={{ fontSize: '0.65rem', color: '#666', letterSpacing: '2px', marginBottom: '0.3rem' }}>
+                  {site.label.toUpperCase()}
+                </div>
+                <div style={{ color: '#D4AF37', fontSize: '0.9rem' }}>{site.name}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Receipt Note */}
+        <div style={{
+          textAlign: 'center', padding: '2rem 0', borderTop: '1px solid #2a2a2a',
+        }}>
+          <p style={{ color: '#666', fontSize: '0.8rem', lineHeight: '1.7', letterSpacing: '0.5px' }}>
+            A receipt has been sent to your email. All transactions are processed securely.<br />
+            Questions? <a href="mailto:support@121212.black" style={{ color: '#D4AF37', textDecoration: 'none' }}>support@121212.black</a>
+          </p>
+          <p style={{ color: '#555', fontSize: '0.75rem', marginTop: '1rem', letterSpacing: '1px' }}>
+            All commerce powered by <a href="/ai" style={{ color: '#D4AF37', textDecoration: 'none' }}>121212.ai</a>
+          </p>
+          <div style={{ marginTop: '2rem' }}>
+            <Link href="/" className="cta-button-secondary" style={{ marginTop: 0 }}>Return to 121212.black</Link>
+          </div>
+        </div>
+
+      </section>
+    </>
+  );
+}
